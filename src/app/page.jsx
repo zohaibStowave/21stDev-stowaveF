@@ -309,7 +309,7 @@
 
 import React, { useState, useEffect } from 'react'
 import WovenLightHero from './components/HoverAnimation'
-import Example from './components/collection/collection'
+// import Example from './components/collection/collection'
 import SocialCards from './components/DailyPosts/dailyPost';
 import { RadialScrollGallery } from './components/scrollGallery/scrollGallery';
 import { HeroSection } from './components/slider/slider';
@@ -317,6 +317,8 @@ import { Marquee } from './components/aboutUs/aboutUs2part'; // Aapka Marquee ya
 import RegularFitPage from './regularFitt/page';
 import OversizedPage from './overSized/page';
 import SweatshirtPage from './sweatShirt/page';
+import Ezzywalkhome from './collections/ezzywalk/page';
+// import PageRevealEvent from './components/waving/wavinganimation';
 
 const sampleCards = [
   { imgUrl: "/IMG_4623.PNG", alt: "Post 1" },
@@ -371,6 +373,7 @@ function Page() {
       <Marquee pauseOnHover className="[--duration:20s] !p-0" />
 
       <SweatshirtPage/>
+      {/* <PageRevealEvent/> */}
       
       <HeroSection
         title="Crafted For Every Story"
@@ -381,14 +384,15 @@ function Page() {
       <Marquee pauseOnHover className="[--duration:20s] !p-0" />
 
       <RegularFitPage/>
-      <Example/>
+      {/* <Example/> */}
       
       <Marquee pauseOnHover className="[--duration:20s] !p-0" />
         
       <OversizedPage/>
       <SocialCards cards={sampleCards}/>
       
-      <Marquee pauseOnHover className="[--duration:20s] !p-0" />      
+      <Marquee pauseOnHover className="[--duration:20s] !p-0" />   
+      <Ezzywalkhome/>
       
       {/* Radial Gallery mapped from database */}
       {galleryItems.length > 0 && (

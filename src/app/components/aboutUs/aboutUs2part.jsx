@@ -223,7 +223,7 @@ export function Marquee({
           to { transform: translateY(calc(-100% - 1rem)); }
         }
         .claude-marquee-track {
-          animation: claude-marquee-x 40s linear infinite;
+          animation: claude-marquee-x 6s linear infinite;
         }
         .claude-marquee-track.vertical {
           animation-name: claude-marquee-y;

@@ -60,7 +60,7 @@ export default function AdminLogin() {
               <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} className="w-full mt-1 px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-900 text-slate-900" placeholder="••••••••" />
             </div>
           </div>
-          <button type="submit" className="w-full py-2.5 px-4 bg-slate-900 text-white rounded-lg font-medium text-sm hover:bg-slate-800 transition-colors shadow-md">
+          <button type="submit" className="w-full cursor-pointer py-2.5 px-4 bg-slate-900 text-white rounded-lg font-medium text-sm hover:bg-slate-800 transition-colors shadow-md">
             Unlock Portal
           </button>
         </form>

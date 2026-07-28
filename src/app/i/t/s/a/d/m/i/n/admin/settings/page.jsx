@@ -151,7 +151,7 @@ export default function AdminSettings() {
               <button
                 type="submit"
                 disabled={loading}
-                className="px-5 py-2 bg-slate-900 text-white rounded-lg font-medium text-sm hover:bg-slate-800 transition-colors disabled:opacity-50 shadow-sm flex items-center"
+                className="px-5 py-2 bg-slate-900 text-white rounded-lg font-medium text-sm hover:bg-slate-800 transition-colors disabled:opacity-50 shadow-sm flex items-center cursor-pointer"
               >
                 {loading ? 'Saving Changes...' : 'Update Portal Secrets'}
               </button>
