@@ -319,6 +319,7 @@ import OversizedPage from './overSized/page';
 import SweatshirtPage from './sweatShirt/page';
 import Ezzywalkhome from './collections/ezzywalk/page';
 // import PageRevealEvent from './components/waving/wavinganimation';
+import Productshowcase from './components/Productshowcase/Productshowcase';
 
 const sampleCards = [
   { imgUrl: "/IMG_4623.PNG", alt: "Post 1" },
@@ -373,6 +374,7 @@ function Page() {
       <Marquee pauseOnHover className="[--duration:20s] !p-0" />
 
       <SweatshirtPage/>
+      <Productshowcase/>
       {/* <PageRevealEvent/> */}
       
       <HeroSection
