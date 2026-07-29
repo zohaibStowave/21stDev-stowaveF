@@ -5,6 +5,7 @@ import AcmeHero from "../components/navbar/Navbar"; // Agar path ka issue ho tou
 import { Footer7 } from "../components/Footer/Footer";
 import ChatAssistant from "../components/hopingAssistant/assistant";
 import VisitorTracker from "../components/VisitorTracker";
+import CookieBanner from "../components/CookieBanner";
 
 export default function ClientLayoutWrapper({ children }) {
   const pathname = usePathname();
@@ -32,6 +33,7 @@ export default function ClientLayoutWrapper({ children }) {
 
         {/* Footer — Admin page pr nahi dikhay ga */}
         {!isAdminPage && <Footer7 />}
+        {!isAdminPage && <CookieBanner />}
       </main>
     </>
   );
