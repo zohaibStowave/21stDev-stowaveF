@@ -308,7 +308,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react'
-import WovenLightHero from './components/HoverAnimation'
+// import WovenLightHero from './components/HoverAnimation'
 // import Example from './components/collection/collection'
 import SocialCards from './components/DailyPosts/dailyPost';
 import { RadialScrollGallery } from './components/scrollGallery/scrollGallery';
@@ -368,13 +368,13 @@ function Page() {
       <div className="w-full bg-gray-100 !py-1 border-y border-gray-200">
         
       </div>
-      <WovenLightHero/>
+      <Productshowcase/>
+      {/* <WovenLightHero/> */}
       
       {/* 🟢 Marquee Call */}
       <Marquee pauseOnHover className="[--duration:20s] !p-0" />
 
       <SweatshirtPage/>
-      <Productshowcase/>
       {/* <PageRevealEvent/> */}
       
       <HeroSection
