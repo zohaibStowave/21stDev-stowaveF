@@ -18,7 +18,7 @@ const defaultSections = [
     links: [
       { name: "About", href: "/aboutUs" },
       { name: "Team", href: "/team" },
-      { name: "Blog", href: "#" },
+      { name: "Blog", href: "/blogs" },
       { name: "Careers", href: "/careers" },
     ],
   },

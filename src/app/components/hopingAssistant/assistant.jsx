@@ -1085,7 +1085,7 @@ export const FloatingAiAssistant = () => {
           - Pricing: ${currentOrigin}/pricing
           - Marketplace: ${currentOrigin}/marketplace
           - Features: ${currentOrigin}/features
-          - Blog: ${currentOrigin}/blog
+          - Blog: ${currentOrigin}/blogs
           - Bag / Cart: ${currentOrigin}/bag
 
           Live Catalog ko check karein aur agar koi product maangay toh details dein.`
