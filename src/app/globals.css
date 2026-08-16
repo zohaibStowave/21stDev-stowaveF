@@ -91,3 +91,63 @@ html, body {
     }
   }
 } */ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:root {
+  --radius: 0.9rem;
+  --background: oklch(0.16 0.018 250);
+  --foreground: oklch(0.96 0.005 250);
+  --card: oklch(0.21 0.021 252);
+  --card-foreground: oklch(0.96 0.005 250);
+  --primary: oklch(0.79 0.16 190);
+  --primary-foreground: oklch(0.18 0.03 210);
+  --secondary: oklch(0.27 0.024 252);
+  --muted-foreground: oklch(0.7 0.018 250);
+  --accent: oklch(0.83 0.15 85);
+  --destructive: oklch(0.63 0.2 25);
+  --border: oklch(0.99 0 0 / 10%);
+  --input: oklch(0.99 0 0 / 14%);
+  --sidebar: oklch(0.185 0.02 252);
+  --sidebar-accent: oklch(0.26 0.024 252);
+  --sidebar-accent-foreground: oklch(0.95 0.006 250);
+
+  --gradient-brand: linear-gradient(135deg, oklch(0.79 0.16 190) 0%, oklch(0.74 0.14 220) 45%, oklch(0.83 0.15 85) 100%);
+  --gradient-aura:
+    radial-gradient(60% 60% at 20% 10%, oklch(0.79 0.16 190 / 22%) 0%, transparent 70%),
+    radial-gradient(50% 50% at 90% 15%, oklch(0.83 0.15 85 / 16%) 0%, transparent 70%),
+    radial-gradient(60% 60% at 60% 100%, oklch(0.68 0.14 250 / 18%) 0%, transparent 70%);
+  --shadow-glow: 0 0 0 1px oklch(0.79 0.16 190 / 18%), 0 18px 60px -20px oklch(0.79 0.16 190 / 35%);
+  --shadow-panel: 0 24px 70px -30px oklch(0 0 0 / 80%);
+}
+
+.brand-gradient { background-image: var(--gradient-brand); }
+.aura-bg { background-image: var(--gradient-aura); }
+.text-gradient { background-image: var(--gradient-brand); background-clip: text; color: transparent; }
+.glow { box-shadow: var(--shadow-glow); }
+.panel-shadow { box-shadow: var(--shadow-panel); }
+.font-display { font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif; }
+
+@keyframes float-slow { 0%,100% { transform: translate3d(0,0,0) rotate(0deg); } 50% { transform: translate3d(0,-18px,0) rotate(4deg); } }
+.animate-float-slow { animation: float-slow 9s ease-in-out infinite; }
+
+@keyframes shimmer-x { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+.shimmer-text {
+  background: linear-gradient(90deg, oklch(0.7 0.018 250) 0%, oklch(0.79 0.16 190) 50%, oklch(0.7 0.018 250) 100%);
+  background-size: 200% 100%;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer-x 2s linear infinite;
+}
