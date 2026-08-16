@@ -53,7 +53,7 @@ const navigationItems = [
   { id: "about-quotes", name: "About Quotes", icon: Quote, href: `${basePath}/about-quotes` },
   { id: "add-reviews", name: "Add Reviews", icon: Star, href: `${basePath}/add-reviews` },
   { id: "blogs", name: "Blogs", icon: BookOpen, href: `${basePath}/blogs` },
-  { id: "assistant-chats", name: "Assistant Chats", icon: MessageSquare, href: `${basePath}/assistant-chats` },
+  { id: "assistant-chats", name: "Assistant Chats", icon: MessageSquare, href: `${basePath}/textExtracor` },
   { id: "inventory", name: "Inventory", icon: Boxes, href: `${basePath}/inventory` },
   { id: "all-files", name: "All Files", icon: Folder, href: `${basePath}/all-files` },
   { id: "documents", name: "Documents", icon: FileText, href: `${basePath}/documents`, badge: "3" },
