@@ -63,12 +63,12 @@ function Page() {
       </div>
       <div className="">
 
-      <Productshowcase/>
+      {/* <Productshowcase/> */}
       </div>
       {/* <WovenLightHero/> */}
       
       {/* 🟢 Marquee Call */}
-      <Marquee pauseOnHover className="[--duration:20s] !p-0" />
+      <Marquee pauseOnHover className="[--duration:20s] !p-0 font-[#ffff]" />
 
       <SweatshirtPage/>
       {/* <PageRevealEvent/> */}

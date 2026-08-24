@@ -51,8 +51,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 // Server Component metadata bilkul safe rha yahan
 export const metadata = {
-  title: "Comfort by Stowave",
-  description: "An interactive tapestry of light and motion",
+  title: "Stowave Quality Wear Everyday",
+  description: "A Premium Clothing Brand for Every Occasion",
 };
 
 export default function RootLayout({ children }) {

@@ -84,7 +84,7 @@
 
 
 // src/app/i/t/s/a/d/m/i/n/admin/lib/chatStore.js
-import { getDb } from './mongodb';
+import { getDb } from './mongodb.js';
 
 const COLLECTION = 'chats';
 

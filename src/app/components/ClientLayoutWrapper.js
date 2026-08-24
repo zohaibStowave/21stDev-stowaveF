@@ -92,7 +92,7 @@ export default function ClientLayoutWrapper({ children }) {
 
       {/* 1. Global Fixed Layer Container — Admin page pr nahi dikhay ga */}
       {!isAdminPage && (
-        <div className="fixed top-0 left-0 w-full z-50 pointer-events-auto">
+        <div className="  w-full h-[4px]  pointer-events-auto">
           <AcmeHero />
         </div>
       )}
