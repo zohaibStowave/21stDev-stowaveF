@@ -36,55 +36,55 @@ const columnTestimonials = [
   {
     text: "The data analytics platform they built gave our team the confidence and tools needed for true data-driven decisions.",
     image: "https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=crop&w=200&q=80",
-    name: "Jessica Roberts",
+    name: "Soban",
     // role: "Lead Data Scientist",
   },
   {
     text: "NovaLabs helped our products find the perfect market fit. Their engineering team exceeded every milestone.",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80",
-    name: "William Carter",
+    name: "Muhammad Hafeez",
     // role: "VP Product",
   },
   {
     text: "The onboarding flow they designed cut our support tickets in half within the first month.",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
-    name: "Amara Singh",
+    name: "Saleem",
     // role: "Head of Customer Success",
   },
   {
     text: "Their attention to performance and accessibility set a new bar for every team we've worked with since.",
     image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&w=200&q=80",
-    name: "Daniel Brooks",
+    name: "Huzaifa",
     // role: "Frontend Lead",
   },
   {
     text: "We shipped three major features in the time it usually takes us to ship one. Incredible velocity.",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80",
-    name: "Priya Nair",
+    name: "Saad",
     // role: "Engineering Manager",
   },
   {
     text: "Communication was clear at every step, and the final product matched our vision perfectly.",
     image: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=200&q=80",
-    name: "Tom Walker",
+    name: "Rameen Fatima",
     // role: "Founder, Brightpath",
   },
   {
     text: "Their QA process caught issues we would have never found ourselves. Rock solid releases every time.",
     image: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=200&q=80",
-    name: "Elena Ruiz",
+    name: "Kaif",
     // role: "QA Lead",
   },
   {
     text: "A genuinely collaborative team that treats your roadmap like their own. Couldn't ask for a better partner.",
     image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=200&q=80",
-    name: "Marcus Lee",
+    name: " Ahad Waseem",
     // role: "Product Director",
   },
   {
     text: "They rebuilt our checkout flow and conversion went up 22% in the first quarter alone.",
     image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80",
-    name: "Sofia Bianchi",
+    name: "Talha",
     // role: "Growth Lead",
   },
   {
@@ -96,7 +96,7 @@ const columnTestimonials = [
   {
     text: "Their design system saved our team months of work and gave us a consistent product overnight.",
     image: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=200&q=80",
-    name: "Grace Kim",
+    name: "Muhammad Sufian",
     // role: "Design Systems Lead",
   },
 ];
@@ -119,10 +119,10 @@ function page() {
       </div>
 
       <div className="text-center py-20 mb-10 px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+        <h2 className="text-3xl md:text-4xl font-bold text-[white] mb-3">
           What our users say
         </h2>
-        <p className="text-gray-600 text-base md:text-lg font-normal">
+        <p className="text-[white]-600 text-base md:text-lg font-normal">
           See what our customers have to say about us.
         </p>
       </div>

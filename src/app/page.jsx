@@ -12,7 +12,9 @@ import OversizedPage from './overSized/page';
 import SweatshirtPage from './sweatShirt/page';
 import Ezzywalkhome from './collections/ezzywalk/page';
 // import PageRevealEvent from './components/waving/wavinganimation';
-import Productshowcase from './components/Productshowcase/Productshowcase';
+import imageSlider from './components/imageSlider/imageSlider';
+import ImageSlider from './components/imageSlider/imageSlider';
+import Collections from './components/mainCollection/collection.js'
 
 const sampleCards = [
   { imgUrl: "/IMG_4623.PNG", alt: "Post 1" },
@@ -62,13 +64,14 @@ function Page() {
         
       </div>
       <div className="">
+        <ImageSlider/>
+        <Collections />
 
-      {/* <Productshowcase/> */}
       </div>
       {/* <WovenLightHero/> */}
       
       {/* 🟢 Marquee Call */}
-      <Marquee pauseOnHover className="[--duration:20s] !p-0 font-[#ffff]" />
+      <Marquee pauseOnHover className="[--duration:20s] !p-0 text-[#ffff]" />
 
       <SweatshirtPage/>
       {/* <PageRevealEvent/> */}

@@ -281,10 +281,10 @@ function Navbar() {
           {/* ------- Logo ------- */}
           <Link href="/" className="flex items-center gap-2 shrink-0 group">
             <Image
-              src="/black-red-transparent.png"
+              src="/white_transparent_logo.png"
               alt="Stowave Logo"
               width={116}
-              height={38}
+              height={50}
               className="object-contain"
               priority
             />
