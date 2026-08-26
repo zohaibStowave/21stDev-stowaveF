@@ -15,6 +15,7 @@ import Ezzywalkhome from './collections/ezzywalk/page';
 import imageSlider from './components/imageSlider/imageSlider';
 import ImageSlider from './components/imageSlider/imageSlider';
 import Collections from './components/mainCollection/collection.js'
+import DemoOne, { Component } from './components/shopNOW/shopNOW';
 
 const sampleCards = [
   { imgUrl: "/IMG_4623.PNG", alt: "Post 1" },
@@ -65,6 +66,7 @@ function Page() {
       </div>
       <div className="">
         <ImageSlider/>
+        {/* <Component /> */}
         <Collections />
 
       </div>
