@@ -48,10 +48,10 @@ export default function ReturnPolicyPage() {
           <li>
             Email{" "}
             <a
-              href="mailto:stowave.store@gmail.com"
+              href="mailto:support@stowave.com"
               className="font-medium text-amber-700 underline underline-offset-2 hover:text-amber-800"
             >
-              stowave.store@gmail.com
+              support@stowave.com
             </a>{" "}
             with your order number and reason for return.
           </li>
@@ -93,10 +93,10 @@ export default function ReturnPolicyPage() {
         <p>
           Reach us anytime at{" "}
           <a
-            href="mailto:stowave.store@gmail.com"
+            href="mailto:support@stowave.com"
             className="font-medium text-amber-700 underline underline-offset-2 hover:text-amber-800"
           >
-            stowave.store@gmail.com
+            support@stowave.com
           </a>{" "}
           — we're a small team of five and read every message ourselves.
         </p>

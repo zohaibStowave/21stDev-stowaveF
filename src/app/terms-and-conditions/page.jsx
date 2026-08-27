@@ -136,10 +136,10 @@ export default function TermsAndConditionsPage() {
         <p>
           For any questions about these terms, email{" "}
           <a
-            href="mailto:stowave.store@gmail.com"
+            href="mailto:support@stowave.com"
             className="font-medium text-amber-700 underline underline-offset-2 hover:text-amber-800"
           >
-            stowave.store@gmail.com
+            support@stowave.com
           </a>
           .
         </p>

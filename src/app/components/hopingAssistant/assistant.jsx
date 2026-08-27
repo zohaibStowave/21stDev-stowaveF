@@ -1073,7 +1073,7 @@ export const FloatingAiAssistant = () => {
           2. Brand Details: Stowave (${currentOrigin}) | Quality Wear Everyday.
           3. 5 Co-founders: Ali Zohaib (Creator & Software Engineer), Waqar Hassan, Ali Husnain, Saif-ul-Rehman.
           4. Ezzywalk: Ek alag company hai jis ke sath Stowave ki collaboration hai. Ezzywalk ke founder Ali Husnain hain aur website ezzywalk.co hai.
-          5. Helpline Number: 03290010909 | Email: stowave.store@gmail.com
+          5. Helpline Number: 03290010909 | Email: hello@stowave.com
           
           Important Links (Use ${currentOrigin} as base domain):
           - About Us/Team: ${currentOrigin}/team

@@ -5,7 +5,7 @@ export default function Contact2({
   title = "Contact Us",
   description = "We are available for questions, feedback, or collaboration opportunities. Let us know how we can help!",
   phone = "(+923) 290010909",
-  email = "stowave.store@gmail.com",
+  email = "hello@stowave.com",
   web = { label: "stowave.com", url: "/" },
 }) {
   return (

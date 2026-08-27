@@ -62,10 +62,10 @@ export default function PricingPage() {
         <p className="text-sm leading-relaxed text-stone-600">
           Questions about a specific order or price? Email us at{" "}
           <a
-            href="mailto:stowave.store@gmail.com"
+            href="mailto:support@stowave.com"
             className="font-medium text-amber-700 underline underline-offset-2 hover:text-amber-800"
           >
-            stowave.store@gmail.com
+            support@stowave.com
           </a>
           .
         </p>

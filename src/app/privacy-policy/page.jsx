@@ -106,10 +106,10 @@ export default function PrivacyPolicyPage() {
         <p>
           Questions about this policy or your data? Reach out at{" "}
           <a
-            href="mailto:stowave.store@gmail.com"
+            href="mailto:support@stowave.com"
             className="font-medium text-amber-700 underline underline-offset-2 hover:text-amber-800"
           >
-            stowave.store@gmail.com
+            support@stowave.com
           </a>{" "}
           and one of our team will get back to you.
         </p>

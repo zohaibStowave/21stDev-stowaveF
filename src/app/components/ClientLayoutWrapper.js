@@ -30,10 +30,11 @@ export default function ClientLayoutWrapper({ children }) {
 
       {/* 1. Global Fixed Layer Container — Admin page pr nahi dikhay ga */}
       {!isAdminPage && (
-        <div className="  w-full h-[4px]  pointer-events-auto">
+        <div className="  w-full  pointer-events-auto">
           <AcmeHero />
         </div>
       )}
+{/* {!isAdminPage && <AcmeHero />} */}
 
       {/* 2. Chat Assistant — Admin page pr nahi dikhay ga */}
       {!isAdminPage && <ChatAssistant />}

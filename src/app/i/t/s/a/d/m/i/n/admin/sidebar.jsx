@@ -225,7 +225,7 @@ const handleLogout = () => {
               {!isCollapsed && (
                 <div className="flex flex-col min-w-0">
                   <span className="text-sm font-medium text-slate-700 truncate">Stowave Admin</span>
-                  <span className="text-xs text-slate-500 truncate">stowave.store@gmail.com</span>
+                  <span className="text-xs text-slate-500 truncate">admin@stowave.com</span>
                 </div>
               )}
             </div>
