@@ -4,11 +4,9 @@ import React, { useState, useEffect } from 'react'
 import SocialCards from './components/DailyPosts/dailyPost';
 import { RadialScrollGallery } from './components/scrollGallery/scrollGallery';
 import { HeroSection } from './components/slider/slider';
-import { Marquee } from './components/aboutUs/aboutUs2part'; 
-import RegularFitPage from './regularFitt/page';
-import OversizedPage from './overSized/page';
+import { Marquee } from './components/aboutUs/aboutUs2part';
 import SweatshirtPage from './sweatShirt/page';
-import Ezzywalkhome from './collections/ezzywalk/page';
+import EzzywalkPage from './ezzywalkslipers/page';
 import ImageSlider from './components/imageSlider/imageSlider';
 import Collections from './components/mainCollection/collection.js'
 // import DemoOne, { Component } from './components/shopNOW/shopNOW'; // Agar unused hai tou comment rehne dein
@@ -38,7 +36,7 @@ function Page() {
         const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
         const response = await fetch(`${API_BASE_URL}/api/radialgallery`);
         const data = await response.json();
-        
+
         if (data.success) {
           setGalleryItems(data.items);
         } else {
@@ -55,38 +53,35 @@ function Page() {
   return (
     <div className="page-clip">
       {/* Yahan se khali div hata diya gaya hai */}
-      
+
       <div className="">
-        <ImageSlider/>
-      <Marquee pauseOnHover className="[--duration:20s] !p-0 text-[#ffff]" />
+        <ImageSlider />
+        <Marquee pauseOnHover className="[--duration:20s] !p-0" />
         <Collections />
       </div>
-      
-      <Marquee pauseOnHover className="[--duration:20s] !p-0 text-[#ffff]" />
 
-      <SweatshirtPage/>
-      
+      <Marquee pauseOnHover className="[--duration:20s] !p-0" />
+
+      <SweatshirtPage />
+
       <HeroSection
         title="Crafted For Every Story"
         subtitle="Discover pieces designed to move with you, wherever the day takes you."
         images={heroSliderImages}
       />
-        
-      <RegularFitPage/>
-        
-      <OversizedPage/>
-      <SocialCards cards={sampleCards}/>
-      
-      <Ezzywalkhome/>
-      
+
+      <SocialCards cards={sampleCards} />
+
+      <EzzywalkPage />
+
       {galleryItems.length > 0 && (
         <RadialScrollGallery>
           {() =>
             galleryItems.map((card, index) => (
               <div key={card._id || index} className="relative w-64 h-96 rounded-xl overflow-hidden shadow-md">
-                <img 
-                  src={card.imgUrl} 
-                  alt={card.alt || `gallery-${index}`} 
+                <img
+                  src={card.imgUrl}
+                  alt={card.alt || `gallery-${index}`}
                   className="w-full h-full object-cover select-none"
                   draggable="false"
                 />

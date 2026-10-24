@@ -846,7 +846,7 @@
 //   const [current, setCurrent] = useState(0);
 //   const [isPaused, setIsPaused] = useState(false);
 //   const [ratio, setRatio] = useState(21 / 9);
-  
+
 //   const touchStartX = useRef(null);
 //   const timerRef = useRef(null);
 //   const ratioSetRef = useRef(false);
@@ -1030,7 +1030,7 @@
 //   const [loading, setLoading] = useState(true);
 //   const [current, setCurrent] = useState(0);
 //   const [isPaused, setIsPaused] = useState(false);
-  
+
 //   const touchStartX = useRef(null);
 //   const timerRef = useRef(null);
 
@@ -1219,7 +1219,7 @@
 //   const [loading, setLoading] = useState(true);
 //   const [current, setCurrent] = useState(0);
 //   const [isPaused, setIsPaused] = useState(false);
-  
+
 //   const touchStartX = useRef(null);
 //   const timerRef = useRef(null);
 
@@ -1414,7 +1414,7 @@ export default function ImageSlider() {
   const [loading, setLoading] = useState(true);
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  
+
   const touchStartX = useRef(null);
   const timerRef = useRef(null);
 
@@ -1548,9 +1548,8 @@ export default function ImageSlider() {
                   key={i}
                   onClick={() => goTo(i)}
                   aria-label={`Slide ${i + 1} par jayein`}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    i === current ? "w-6 bg-white" : "w-2 bg-white/50 hover:bg-white/80"
-                  }`}
+                  className={`h-2 rounded-full transition-all duration-300 ${i === current ? "w-6 bg-white" : "w-2 bg-white/50 hover:bg-white/80"
+                    }`}
                 />
               ))}
             </div>

@@ -6,6 +6,7 @@ import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { BsPersonCircle } from "react-icons/bs";
 import Link from "next/link";
 import Image from "next/image";
+import ThemeToggle from "../ThemeToggle";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -110,7 +111,9 @@ function Navbar() {
           </div>
 
           {/* ------- Right side actions ------- */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <ThemeToggle />
+
             <div className="hidden lg:block h-6 w-[1px] bg-black/10 dark:bg-white/10" />
 
             <Link
@@ -157,13 +160,16 @@ function Navbar() {
               <span className="text-[12px] uppercase tracking-[0.2em] text-black/50 dark:text-[#f2f0ea]/50">
                 Menu
               </span>
-              <button
-                onClick={() => setIsOpen(false)}
-                aria-label="Close menu"
-                className="p-1.5 rounded-md hover:bg-black/5 dark:hover:bg-white/5 text-black dark:text-[#f2f0ea] transition-colors"
-              >
-                <X className="h-5 w-5" />
-              </button>
+              <div className="flex items-center gap-2">
+                <ThemeToggle />
+                <button
+                  onClick={() => setIsOpen(false)}
+                  aria-label="Close menu"
+                  className="p-1.5 rounded-md hover:bg-black/5 dark:hover:bg-white/5 text-black dark:text-[#f2f0ea] transition-colors"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
             </div>
 
             <nav className="flex-1 overflow-y-auto px-5 py-6 flex flex-col gap-1">

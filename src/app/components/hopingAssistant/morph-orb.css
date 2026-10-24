@@ -1,0 +1,857 @@
+/* ─────────────────────────────────────────────────────────────
+   MorphOrb AI Shopping Assistant Styles
+   Side-Docked Floating Glassmorphic Chatbox with Blinking Avatar
+───────────────────────────────────────────────────────────── */
+
+/* ── Floating Side-Docked Chatbox Widget ── */
+.mo-widget-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  width: min(410px, calc(100vw - 32px));
+  height: min(580px, calc(100dvh - 48px));
+  border-radius: 26px;
+  background: linear-gradient(175deg, rgba(20, 23, 33, 0.96) 0%, rgba(9, 10, 16, 0.98) 100%);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.85), 0 0 35px rgba(13, 148, 136, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: moWidgetPopIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: bottom right;
+}
+
+@keyframes moWidgetPopIn {
+  from {
+    opacity: 0;
+    transform: scale(0.88) translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ── Top Header inside the Side Widget ── */
+.mo-widget-header {
+  height: 58px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  flex-shrink: 0;
+  z-index: 30;
+}
+
+.mo-widget-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mo-widget-header-title-box {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.mo-widget-header-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.mo-online-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  background: #34d399;
+  box-shadow: 0 0 8px #34d399;
+  animation: moPulseDot 2s infinite ease-in-out;
+}
+
+@keyframes moPulseDot {
+  0%, 100% { opacity: 0.6; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.mo-widget-header-sub {
+  font-size: 10px;
+  font-weight: 500;
+  color: #a1a1aa;
+}
+
+.mo-widget-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mo-bag-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e4e4e7;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mo-bag-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(52, 211, 153, 0.5);
+  color: #ffffff;
+}
+
+.mo-widget-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #a1a1aa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mo-widget-close:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  transform: scale(1.06);
+}
+
+.mo-widget-close:active {
+  transform: scale(0.92);
+}
+
+/* ── Body Container for MorphOrb Stage ── */
+.mo-widget-body {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ── MorphOrb Stage Root (Scoped inside the side widget) ── */
+.mo-root {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  pointer-events: auto;
+  user-select: none;
+  --oCenter: 0;
+}
+
+/* Inner subtle ambient background */
+.mo-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 36%, rgba(13, 148, 136, 0.08) 0%, rgba(99, 102, 241, 0.04) 50%, transparent 80%);
+  pointer-events: none;
+}
+
+/* ── Center Halo (appears when orb blooms) ── */
+.mo-halo {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  top: 36%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  pointer-events: none;
+  opacity: var(--oCenter, 0);
+  background: radial-gradient(circle, rgba(13, 148, 136, 0.3) 0%, rgba(168, 85, 247, 0.18) 35%, rgba(52, 211, 153, 0.1) 55%, transparent 75%);
+  filter: blur(32px);
+  transition: opacity 0.35s ease;
+  will-change: opacity;
+}
+
+/* ── Quick Suggestion Chips (Idle Phase Only) ── */
+.mo-suggestions {
+  position: absolute;
+  bottom: 74px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  width: calc(100% - 24px);
+  z-index: 40;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: auto;
+}
+
+.mo-chip-btn {
+  padding: 5px 11px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  backdrop-filter: blur(12px);
+  white-space: nowrap;
+}
+
+.mo-chip-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(52, 211, 153, 0.4);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.mo-root[data-phase]:not([data-phase="idle"]) .mo-suggestions {
+  opacity: 0;
+  transform: translateX(-50%) translateY(8px);
+  pointer-events: none;
+}
+
+/* ── Stage Mover ── */
+.mo-mover {
+  position: absolute;
+  top: 36%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* ── Ghost Trails (Flight Path Particles) ── */
+.mo-trail {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  border-radius: 9999px;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle, rgba(13, 148, 136, 0.5) 0%, rgba(168, 85, 247, 0.3) 45%, transparent 70%);
+  filter: blur(5px);
+  will-change: transform, opacity;
+}
+
+/* ── Morphing Actor Container ── */
+.mo-actor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  width: var(--w, 360px);
+  height: var(--h, 54px);
+  border-radius: var(--r, 999px);
+  pointer-events: auto;
+  will-change: width, height, border-radius, transform;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.mo-actor[data-shake] {
+  animation: moShake 0.26s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.mo-actor[data-flash] {
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.8), 0 0 20px rgba(239, 68, 68, 0.5) !important;
+}
+
+@keyframes moShake {
+  0%, 100% { transform: translate(-50%, -50%); }
+  20%, 60% { transform: translate(calc(-50% - 5px), -50%); }
+  40%, 80% { transform: translate(calc(-50% + 5px), -50%); }
+}
+
+/* ── Layer 1: Ambient Underglow ── */
+.mo-underglow {
+  position: absolute;
+  inset: -10px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: var(--oGlow, 1);
+  background: radial-gradient(ellipse at 50% 50%, rgba(13, 148, 136, 0.35) 0%, rgba(99, 102, 241, 0.2) 40%, rgba(236, 72, 153, 0.1) 70%, transparent 85%);
+  filter: blur(14px);
+  will-change: opacity;
+}
+
+/* ── Layer 2: Green Pulse Halo ── */
+.mo-halo-green {
+  position: absolute;
+  inset: -16px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: var(--oHalo, 0);
+  background: radial-gradient(circle at 50% 50%, rgba(52, 211, 153, 0.5) 0%, rgba(16, 185, 129, 0.25) 50%, transparent 80%);
+  filter: blur(18px);
+  will-change: opacity;
+}
+
+/* ── Layer 3: Pill Surface with Animated Aurora ── */
+.mo-surface {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: var(--oPill, 1);
+  background: rgba(18, 20, 29, 0.9);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12), 0 8px 28px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  will-change: opacity;
+}
+
+.mo-aurora {
+  position: absolute;
+  inset: -40%;
+  opacity: var(--oAur, 1);
+  filter: blur(20px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.mo-aurora i {
+  position: absolute;
+  border-radius: 50%;
+  animation: moAurora 8s ease-in-out infinite alternate;
+}
+
+.mo-aurora i:nth-child(1) {
+  width: 55%;
+  height: 80%;
+  background: #0d9488;
+  top: -10%;
+  left: 0%;
+  animation-duration: 6s;
+  opacity: 0.35;
+}
+
+.mo-aurora i:nth-child(2) {
+  width: 50%;
+  height: 75%;
+  background: #6366f1;
+  top: 20%;
+  right: 5%;
+  animation-duration: 8s;
+  animation-delay: -2s;
+  opacity: 0.35;
+}
+
+.mo-aurora i:nth-child(3) {
+  width: 45%;
+  height: 70%;
+  background: #a855f7;
+  bottom: -15%;
+  left: 25%;
+  animation-duration: 7s;
+  animation-delay: -4s;
+  opacity: 0.25;
+}
+
+.mo-aurora i:nth-child(4) {
+  width: 40%;
+  height: 65%;
+  background: #10b981;
+  top: 10%;
+  left: 40%;
+  animation-duration: 9s;
+  animation-delay: -1s;
+  opacity: 0.25;
+}
+
+@keyframes moAurora {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  50% { transform: translate(12px, -8px) scale(1.12) rotate(35deg); }
+  100% { transform: translate(-8px, 12px) scale(0.95) rotate(-25deg); }
+}
+
+/* ── Layer 4: Flying Ball ── */
+.mo-ball {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: var(--oBall, 0);
+  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #2dd4bf 25%, #0d9488 55%, #134e4a 100%);
+  box-shadow: 0 0 30px rgba(45, 212, 191, 0.7), 0 0 50px rgba(13, 148, 136, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+  will-change: opacity;
+}
+
+/* ── Layer 5: Green Resolved Orb ── */
+.mo-green {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  top: 50%;
+  left: 50%;
+  margin: -27px 0 0 -27px;
+  border-radius: 999px;
+  pointer-events: none;
+  opacity: var(--oGreen, 0);
+  transform: scale(var(--gs, 1));
+  background: radial-gradient(circle at 32% 28%, #a7f3d0 0%, #34d399 30%, #059669 65%, #064e3b 100%);
+  box-shadow: 0 0 35px rgba(52, 211, 153, 0.85), 0 0 60px rgba(16, 185, 129, 0.5), inset 0 2px 5px rgba(255, 255, 255, 0.8);
+  will-change: opacity, transform;
+}
+
+/* ── Layer 6: Answer Card Background ── */
+.mo-card {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: var(--oCard, 0);
+  transform: scale(var(--cs, 1));
+  background: linear-gradient(145deg, rgba(26, 28, 38, 0.95) 0%, rgba(12, 14, 20, 0.98) 100%);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.85), 0 0 calc(30px * var(--bloom, 1)) rgba(52, 211, 153, calc(0.25 * var(--bloom, 1))), inset 0 1px 1px rgba(255, 255, 255, 0.16);
+  will-change: opacity, transform;
+}
+
+/* ── Layer 7: Glowing Outer Ring ── */
+.mo-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: var(--oRing, 1);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.18);
+  will-change: opacity;
+}
+
+/* ── Form & Input Field ── */
+.mo-input {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 8px 0 16px;
+  opacity: var(--oInput, 1);
+  transform: scale(var(--inScale, 1));
+  pointer-events: auto;
+  z-index: 5;
+  will-change: opacity, transform, filter;
+}
+
+.mo-spark {
+  width: 18px;
+  height: 18px;
+  color: #2dd4bf;
+  margin-right: 10px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 6px rgba(45, 212, 191, 0.5));
+}
+
+.mo-field {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 0;
+  letter-spacing: -0.01em;
+}
+
+.mo-field::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.mo-send {
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+  flex-shrink: 0;
+}
+
+.mo-send svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+}
+
+.mo-send[data-ready] {
+  background: #ffffff;
+  color: #09090b;
+  border-color: #ffffff;
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.45);
+  transform: scale(1.05);
+}
+
+.mo-send[data-ready]:hover {
+  background: #f4f4f5;
+  transform: scale(1.08);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.65);
+}
+
+/* ── 3D Particle Canvas Orb ── */
+.mo-orb {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* ── Expanding Condense Pulse ── */
+.mo-pulse {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  top: 50%;
+  left: 50%;
+  margin: -27px 0 0 -27px;
+  border-radius: 999px;
+  border: 2px solid #34d399;
+  pointer-events: none;
+  opacity: 0;
+  box-shadow: 0 0 20px #34d399;
+  z-index: 3;
+  will-change: transform, opacity;
+}
+
+/* ── Answer Card Layout ── */
+.mo-answer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 18px;
+  opacity: var(--oCard, 0);
+  pointer-events: auto;
+  z-index: 6;
+  overflow: hidden;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.mo-a-head {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.6);
+  opacity: var(--hOp, 0);
+  margin-bottom: 6px;
+  flex-shrink: 0;
+  will-change: opacity;
+}
+
+.mo-a-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: #34d399;
+  box-shadow: 0 0 8px #34d399;
+  transform: scale(var(--dotS, 0));
+  will-change: transform;
+}
+
+.mo-a-body {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #f4f4f5;
+  margin: 0;
+  overflow-y: auto;
+  flex: 1;
+  word-break: break-word;
+  font-weight: 400;
+  padding-right: 4px;
+}
+
+.mo-a-body::-webkit-scrollbar {
+  width: 3px;
+}
+
+.mo-a-body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+}
+
+.mo-w {
+  display: inline-block;
+  will-change: opacity, transform, filter;
+}
+
+/* ── Product Recommendation Card in Answer ── */
+.mo-product-card {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  flex-shrink: 0;
+}
+
+.mo-product-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(52, 211, 153, 0.5);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.mo-product-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.mo-product-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.mo-product-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mo-product-meta {
+  font-size: 10px;
+  color: #a1a1aa;
+}
+
+.mo-product-price {
+  color: #34d399;
+  font-weight: 600;
+}
+
+.mo-product-cta {
+  font-size: 10px;
+  font-weight: 600;
+  color: #ffffff;
+  background: rgba(52, 211, 153, 0.2);
+  border: 1px solid rgba(52, 211, 153, 0.4);
+  padding: 3px 8px;
+  border-radius: 9999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Status Text Label Below Orb ── */
+.mo-status {
+  position: absolute;
+  top: calc(36% + 76px);
+  left: 50%;
+  transform: translate(-50%, var(--sTy, 0px));
+  opacity: var(--sOp, 0);
+  pointer-events: none;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 26px;
+  will-change: opacity, transform;
+}
+
+.mo-lab {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
+
+.mo-in {
+  animation: moLabelIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.mo-out {
+  animation: moLabelOut 0.25s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+@keyframes moLabelIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes moLabelOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-5px); }
+}
+
+.mo-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.5px;
+  margin-left: 2px;
+}
+
+.mo-dots i {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: moDotPulse 1.2s infinite ease-in-out;
+}
+
+.mo-dots i:nth-child(1) { animation-delay: 0s; }
+.mo-dots i:nth-child(2) { animation-delay: 0.2s; }
+.mo-dots i:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes moDotPulse {
+  0%, 80%, 100% { opacity: 0.25; transform: scale(0.8); }
+  40% { opacity: 1; transform: scale(1.2); }
+}
+
+.mo-lab-done {
+  color: #34d399;
+  font-weight: 600;
+  text-shadow: 0 0 12px rgba(52, 211, 153, 0.6);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ── Reset Button ("Ask new question") ── */
+.mo-reset {
+  position: absolute;
+  top: calc(36% + 94px);
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 20;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #f4f4f5;
+  padding: 6px 18px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.mo-reset:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(52, 211, 153, 0.5);
+  color: #ffffff;
+  transform: translate(-50%, -2px) scale(1.04);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+}
+
+.mo-reset:active {
+  transform: translate(-50%, 0) scale(0.97);
+}
+
+.mo-root[data-phase="answered"] .mo-reset {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ── Screen Reader Polite Live Region ── */
+.mo-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* ── Debug Bar ── */
+.mo-debug {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 11px;
+  color: #a1a1aa;
+}
+
+.mo-chip {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #ffffff;
+  font-family: monospace;
+}
+
+/* ── Mobile Viewport Tweaks ── */
+@media (max-width: 640px) {
+  .mo-widget-container {
+    bottom: 12px;
+    right: 12px;
+    left: 12px;
+    width: auto;
+    height: min(540px, calc(100dvh - 24px));
+    border-radius: 22px;
+  }
+}

@@ -1,128 +1,13 @@
-// "use client";
-
-// import * as React from "react";
-// import { ProductCard } from "../components/Productcard";
-// // import { HeroSection } from "../components/slider/slider";
-
-// const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-
-// export default function OversizedPage() {
-//   const [allProducts, setAllProducts] = React.useState([]);
-//   const [loading, setLoading] = React.useState(true);
-//   const [error, setError] = React.useState("");
-
-//   React.useEffect(() => {
-//     const fetchProducts = async () => {
-//       setLoading(true);
-//       setError("");
-//       try {
-//         const res = await fetch(`${API_BASE_URL}/api/Addproducts`);
-//         const data = await res.json();
-
-//         if (data.success) {
-//           setAllProducts(data.products);
-//         } else {
-//           setError(data.error || "Products load nahi ho sake.");
-//         }
-//       } catch (err) {
-//         console.error("fetchProducts error:", err);
-//         setError("Can't connect to server. Is your backend live?");
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchProducts();
-//   }, []);
-
-//   const heroSliderImages = [
-//     { src: "/IMG_4623.PNG", alt: "Slide 1" },
-//     { src: "/IMG_4632.PNG", alt: "Slide 2" },
-//     { src: "/IMG_4824.PNG", alt: "Slide 3" },
-//     { src: "/IMG_4909.PNG", alt: "Slide 4" },
-//     { src: "/IMG_4916.PNG", alt: "Slide 5" },
-//   ];
-
-//   return (
-//     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 py-28 px-4 sm:px-6 lg:px-8">
-//       <div className="max-w-6xl mx-auto">
-//         <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50 mb-8 text-center">
-//           Oversized Collection
-//         </h1>
-
-//         {loading ? (
-//           <p className="text-sm text-zinc-400 text-center py-10">
-//             Products is loading...
-//           </p>
-//         ) : error ? (
-//           <p className="text-sm text-red-500 text-center py-10">{error}</p>
-//         ) : allProducts.length === 0 ? (
-//           <p className="text-sm text-zinc-400 text-center py-10">
-//             There is no product uploaded yet!
-//           </p>
-//         ) : (
-//           // mobile/choti screens par 2 columns, tablet+ par 3
-//           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6">
-//             {allProducts.map((product) => (
-//               <ProductCard
-//                 key={product._id}
-//                 slug={product.slug}
-//                 name={product.name}
-//                 tagline={product.tagline} 
-//                 price={product.price}
-//                 originalPrice={product.originalPrice}
-//                 offerText={product.offerText} 
-//                 imageUrl={product.imageUrl}
-//                 isCouponPrice={product.isCouponPrice || false}
-//               />
-//             ))}
-//           </div>
-//         )}
-//       </div>
-
-  
-//     </div>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 "use client";
 
 import * as React from "react";
+import { useRouter } from "next/navigation";
 import { ProductCard } from "../components/Productcard";
-// import { HeroSection } from "../components/slider/slider";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
 export default function OversizedPage() {
+  const router = useRouter();
   const [allProducts, setAllProducts] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState("");
@@ -136,7 +21,7 @@ export default function OversizedPage() {
         const data = await res.json();
 
         if (data.success) {
-          setAllProducts(data.products);
+          setAllProducts(data.products || []);
         } else {
           setError(data.error || "Products load nahi ho sake.");
         }
@@ -151,30 +36,38 @@ export default function OversizedPage() {
     fetchProducts();
   }, []);
 
-  // Jab tak products load na ho jaye, ya error aaye, ya list empty ho — kuch bhi render na karo
   if (loading || error || allProducts.length === 0) {
     return null;
   }
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 py-28 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50 mb-8 text-center">
-          Oversized Collection
-        </h1>
+    <div className="bg-zinc-50 dark:bg-zinc-950 py-12 sm:py-16 md:py-20 px-3 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-6 sm:mb-10">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-zinc-900 dark:text-zinc-50 tracking-tight">
+            Oversized Collection
+          </h2>
+          <p className="mt-2 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 max-w-xl mx-auto">
+            Relaxed streetwear fits with drop-shoulder tailoring.
+          </p>
+        </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
           {allProducts.map((product) => (
             <ProductCard
               key={product._id}
-              slug={product.slug}
+              id={product._id}
+              slug={product.slug || product._id}
               name={product.name}
               tagline={product.tagline}
+              description={product.description}
               price={product.price}
               originalPrice={product.originalPrice}
               offerText={product.offerText}
               imageUrl={product.imageUrl}
+              soldOut={product.soldOut}
               isCouponPrice={product.isCouponPrice || false}
+              onClick={() => router.push(`/products/${product.slug || product._id}`)}
             />
           ))}
         </div>
