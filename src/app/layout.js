@@ -79,8 +79,21 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* DNS & connection warmup for image CDN */}
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+        {/* Preconnect to backend API to avoid cold-start latency on slider fetch */}
+        <link rel="preconnect" href="https://21st-dev-stowaveb.vercel.app" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://21st-dev-stowaveb.vercel.app" />
+        {/* LCP hero image preload — desktop (full width, matches imageSlider INITIAL_SLIDES exactly) */}
+        <link
+          rel="preload"
+          as="image"
+          href="https://res.cloudinary.com/dqmjtblih/image/upload/f_auto,q_auto:best,w_1920/v1787830145/slider/gccfzxvgpyedtqzvqcbe.jpg"
+          media="(min-width: 769px)"
+          fetchPriority="high"
+        />
+        {/* LCP hero image preload — mobile (compressed) */}
         <link
           rel="preload"
           as="image"

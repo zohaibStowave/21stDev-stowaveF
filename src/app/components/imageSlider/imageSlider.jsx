@@ -6,10 +6,11 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const AUTOPLAY_MS = 4000;
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
-// Fallback initial slide with 100% original untouched resolution
+// Fallback initial slide — pre-optimized via Cloudinary transformations
+// This image is shown immediately on first paint before the API responds
 const INITIAL_SLIDES = [
   {
-    src: "https://res.cloudinary.com/dqmjtblih/image/upload/v1787830145/slider/gccfzxvgpyedtqzvqcbe.jpg",
+    src: "https://res.cloudinary.com/dqmjtblih/image/upload/f_auto,q_auto:best,w_1920/v1787830145/slider/gccfzxvgpyedtqzvqcbe.jpg",
     caption: "Stowave ",
   },
 ];
@@ -18,6 +19,14 @@ const getMobileUrl = (url) => {
   if (!url) return "";
   if (url.includes("res.cloudinary.com") && url.includes("/upload/")) {
     return url.replace("/upload/", "/upload/f_auto,q_auto:best,w_800/");
+  }
+  return url;
+};
+
+const getDesktopUrl = (url) => {
+  if (!url) return "";
+  if (url.includes("res.cloudinary.com") && url.includes("/upload/")) {
+    return url.replace("/upload/", "/upload/f_auto,q_auto:best,w_1920/");
   }
   return url;
 };
@@ -110,17 +119,22 @@ export default function ImageSlider() {
         >
           {slides.map((slide, i) => {
             const mobileSrc = getMobileUrl(slide.src);
+            const desktopSrc = getDesktopUrl(slide.src);
+            const displaySrc = desktopSrc || slide.src;
             return (
               <div key={i} className="relative w-full h-full flex-shrink-0">
                 <picture className="w-full h-full block">
                   {mobileSrc && mobileSrc !== slide.src && (
                     <source media="(max-width: 768px)" srcSet={mobileSrc} />
                   )}
+                  {desktopSrc && desktopSrc !== slide.src && (
+                    <source media="(min-width: 769px)" srcSet={desktopSrc} />
+                  )}
                   <img
-                    src={slide.src}
+                    src={displaySrc}
                     alt={slide.caption || `Slide ${i + 1}`}
-                    width={2752}
-                    height={917}
+                    width={1920}
+                    height={640}
                     className="w-full h-full object-cover"
                     draggable={false}
                     loading={i === 0 ? "eager" : "lazy"}
