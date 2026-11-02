@@ -16,9 +16,12 @@ export default function ClientLayoutWrapper({ children }) {
   const isAdminPage = pathname.startsWith("/i/t/s/a/d/m/i/n/admin");
 
   useEffect(() => {
-    // 1. Clarity sirf tab initialize ho jab page admin panel na ho
+    // 1. Clarity initialize after page paint to avoid blocking LCP on mobile
     if (!isAdminPage && process.env.NODE_ENV === "production") {
-      clarity.init("xwgwu4dvdz");
+      const timer = setTimeout(() => {
+        clarity.init("xwgwu4dvdz");
+      }, 3000);
+      return () => clearTimeout(timer);
     }
   }, [isAdminPage]);
 

@@ -78,6 +78,17 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+        <link
+          rel="preload"
+          as="image"
+          href="https://res.cloudinary.com/dqmjtblih/image/upload/f_auto,q_auto:best,w_800/v1787830145/slider/gccfzxvgpyedtqzvqcbe.jpg"
+          media="(max-width: 768px)"
+          fetchPriority="high"
+        />
+      </head>
       <body className={`${inter.className} antialiased bg-background text-foreground transition-colors duration-200`}>
         <ThemeProvider
           attribute="class"

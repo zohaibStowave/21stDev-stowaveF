@@ -117,7 +117,10 @@ export default function Collections() {
               <img
                 src={col.image}
                 alt={col.title}
+                width={600}
+                height={500}
                 loading="lazy"
+                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-108 transition-transform duration-700 ease-out"
               />
 

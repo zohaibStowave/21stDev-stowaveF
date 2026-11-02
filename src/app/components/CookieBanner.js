@@ -124,8 +124,8 @@ export default function CookieBanner() {
   useEffect(() => {
     const hasAccepted = localStorage.getItem("cookie_consent_accepted");
     if (!hasAccepted) {
-      // 1 second ka delay taake website load hone ke baad pyara sa animation aaye
-      const timer = setTimeout(() => setShowBanner(true), 1000);
+      // 3 second ka delay taake LCP render ho sake aur us ke baad pyara sa animation aaye
+      const timer = setTimeout(() => setShowBanner(true), 3000);
       return () => clearTimeout(timer);
     }
   }, []);

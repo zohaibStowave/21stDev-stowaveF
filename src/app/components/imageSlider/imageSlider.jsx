@@ -17,7 +17,7 @@ const INITIAL_SLIDES = [
 const getMobileUrl = (url) => {
   if (!url) return "";
   if (url.includes("res.cloudinary.com") && url.includes("/upload/")) {
-    return url.replace("/upload/", "/upload/f_auto,q_auto:best,w_1080/");
+    return url.replace("/upload/", "/upload/f_auto,q_auto:best,w_800/");
   }
   return url;
 };
@@ -119,6 +119,8 @@ export default function ImageSlider() {
                   <img
                     src={slide.src}
                     alt={slide.caption || `Slide ${i + 1}`}
+                    width={2752}
+                    height={917}
                     className="w-full h-full object-cover"
                     draggable={false}
                     loading={i === 0 ? "eager" : "lazy"}
