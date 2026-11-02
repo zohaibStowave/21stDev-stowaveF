@@ -1,15 +1,32 @@
 "use client";
 
-import React, { useState, useEffect } from 'react'
-import SocialCards from './components/DailyPosts/dailyPost';
-import { RadialScrollGallery } from './components/scrollGallery/scrollGallery';
-import { HeroSection } from './components/slider/slider';
-import { Marquee } from './components/aboutUs/aboutUs2part';
-import SweatshirtPage from './sweatShirt/page';
-import EzzywalkPage from './ezzywalkslipers/page';
-import ImageSlider from './components/imageSlider/imageSlider';
-import Collections from './components/mainCollection/collection.js'
-// import DemoOne, { Component } from './components/shopNOW/shopNOW'; // Agar unused hai tou comment rehne dein
+import React, { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
+import { Marquee } from "./components/aboutUs/aboutUs2part";
+import ImageSlider from "./components/imageSlider/imageSlider";
+import Collections from "./components/mainCollection/collection.js";
+
+// Below-the-fold components dynamically loaded to maximize mobile Performance and Speed Index
+const SweatshirtPage = dynamic(() => import("./sweatShirt/page"), {
+  ssr: false,
+});
+const HeroSection = dynamic(
+  () => import("./components/slider/slider").then((mod) => mod.HeroSection),
+  { ssr: false }
+);
+const SocialCards = dynamic(() => import("./components/DailyPosts/dailyPost"), {
+  ssr: false,
+});
+const EzzywalkPage = dynamic(() => import("./ezzywalkslipers/page"), {
+  ssr: false,
+});
+const RadialScrollGallery = dynamic(
+  () =>
+    import("./components/scrollGallery/scrollGallery").then(
+      (mod) => mod.RadialScrollGallery
+    ),
+  { ssr: false }
+);
 
 const sampleCards = [
   { imgUrl: "/IMG_4623.PNG", alt: "Post 1" },
@@ -52,9 +69,7 @@ function Page() {
 
   return (
     <div className="page-clip">
-      {/* Yahan se khali div hata diya gaya hai */}
-
-      <div className="">
+      <div>
         <ImageSlider />
         <Marquee pauseOnHover className="[--duration:20s] !p-0" />
         <Collections />
@@ -78,10 +93,15 @@ function Page() {
         <RadialScrollGallery>
           {() =>
             galleryItems.map((card, index) => (
-              <div key={card._id || index} className="relative w-64 h-96 rounded-xl overflow-hidden shadow-md">
+              <div
+                key={card._id || index}
+                className="relative w-64 h-96 rounded-xl overflow-hidden shadow-md"
+              >
                 <img
                   src={card.imgUrl}
                   alt={card.alt || `gallery-${index}`}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover select-none"
                   draggable="false"
                 />
@@ -93,7 +113,7 @@ function Page() {
 
       <Marquee pauseOnHover className="[--duration:20s] !p-0" />
     </div>
-  )
+  );
 }
 
 export default Page;

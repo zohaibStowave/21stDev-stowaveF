@@ -48,7 +48,7 @@ const defaultLegalLinks = [
 export const Footer7 = ({
   logo = {
     url: "/",
-    src: "black-red-transparent.png",
+    src: "/black-red-transparent.png",
     alt: "stowave",
     title: "",
   },
@@ -65,24 +65,24 @@ export const Footer7 = ({
           <div className="flex w-full flex-col justify-between gap-6 lg:items-start">
             {/* Logo and Brand Name */}
             <div className="flex items-center gap-2 lg:justify-start">
-              <a href={logo.url}>
+              <a href={logo.url} aria-label="Stowave Home">
                 <img
                   src={logo.src}
-                  alt={logo.alt}
+                  alt={logo.alt || "Stowave Logo"}
                   title={logo.title}
-                  className="h-8"
+                  className="h-8 w-auto"
                 />
               </a>
-              <h2 className="text-xl font-semibold">{logo.title}</h2>
+              {logo.title && <h2 className="text-xl font-semibold">{logo.title}</h2>}
             </div>
-            <p className="max-w-[70%] text-sm text-zinc-500 dark:text-zinc-400">
+            <p className="max-w-[70%] text-sm text-zinc-600 dark:text-zinc-400">
               {description}
             </p>
             {/* Social Icons Loop */}
-            <ul className="flex items-center space-x-6 text-zinc-400 dark:text-zinc-500">
+            <ul className="flex items-center space-x-6 text-zinc-600 dark:text-zinc-400">
               {socialLinks.map((social, idx) => (
                 <li key={idx} className="font-medium hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
-                  <a href={social.href} aria-label={social.label}>
+                  <a href={social.href} aria-label={social.label} rel="noopener noreferrer">
                     {social.icon}
                   </a>
                 </li>
@@ -94,8 +94,8 @@ export const Footer7 = ({
           <div className="grid w-full gap-6 md:grid-cols-3 lg:gap-20">
             {sections.map((section, sectionIdx) => (
               <div key={sectionIdx}>
-                <h3 className="mb-4 font-bold text-zinc-800 dark:text-zinc-200">{section.title}</h3>
-                <ul className="space-y-3 text-sm text-zinc-500 dark:text-zinc-400">
+                <h3 className="mb-4 font-bold text-zinc-900 dark:text-zinc-100">{section.title}</h3>
+                <ul className="space-y-3 text-sm text-zinc-600 dark:text-zinc-400">
                   {section.links.map((link, linkIdx) => (
                     <li
                       key={linkIdx}
@@ -111,12 +111,12 @@ export const Footer7 = ({
         </div>
         
         {/* Copyright and Bottom Legal Links */}
-        <div className="mt-8 flex flex-col justify-between gap-4 border-t border-zinc-200 dark:border-zinc-800 pt-8 pb-0 mb-0 text-xs font-medium text-zinc-400 dark:text-zinc-500 md:flex-row md:items-center md:text-left">
+        <div className="mt-8 flex flex-col justify-between gap-4 border-t border-zinc-200 dark:border-zinc-800 pt-8 pb-0 mb-0 text-xs font-medium text-zinc-600 dark:text-zinc-400 md:flex-row md:items-center md:text-left">
           <p className="order-2 lg:order-1">{copyright}</p>
           <ul className="order-1 flex flex-col gap-2 md:order-2 md:flex-row">
             {legalLinks.map((link, idx) => (
               <li key={idx} className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
-                <a href={link.href}> {link.name}</a>
+                <a href={link.href}>{link.name}</a>
               </li>
             ))}
           </ul>

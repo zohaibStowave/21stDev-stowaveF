@@ -53,11 +53,26 @@ import "./globals.css";
 import ClientLayoutWrapper from "./components/ClientLayoutWrapper";
 import { ThemeProvider } from "./components/ThemeProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata = {
   title: "Stowave Quality Wear Everyday",
   description: "A Premium Clothing Brand for Every Occasion",
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
 };
 
 export default function RootLayout({ children }) {

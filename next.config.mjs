@@ -15,8 +15,14 @@
 const nextConfig = {
   /* config options here */
   reactCompiler: true,
+  compress: true,
   images: {
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
       {
         protocol: "https",
         hostname: "images.unsplash.com",
@@ -24,6 +30,10 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "plus.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "*.supabase.co",
       },
     ],
   },

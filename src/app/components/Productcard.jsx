@@ -81,6 +81,7 @@ export const ProductCard = React.forwardRef(function ProductCard(
             src={imageUrl}
             alt={name || "Product image"}
             loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
           />
         ) : (

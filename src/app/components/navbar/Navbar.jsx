@@ -118,10 +118,11 @@ function Navbar() {
 
             <Link
               href={isLoggedIn ? "/profile" : "/signUp"}
+              aria-label={isLoggedIn ? "My Account" : "Sign in or Sign up"}
               className={`hidden lg:inline-flex h-9 w-9 items-center justify-center rounded-full transition-colors ${
                 isLoggedIn
                   ? "text-[#e3402b] hover:bg-[#e3402b]/10"
-                  : "text-black/60 dark:text-[#f2f0ea]/60 hover:text-black dark:hover:text-[#f2f0ea] hover:bg-black/5 dark:hover:bg-white/5"
+                  : "text-black/70 dark:text-[#f2f0ea]/70 hover:text-black dark:hover:text-[#f2f0ea] hover:bg-black/5 dark:hover:bg-white/5"
               }`}
               title={isLoggedIn ? "My Account" : "Sign in / Sign up"}
             >

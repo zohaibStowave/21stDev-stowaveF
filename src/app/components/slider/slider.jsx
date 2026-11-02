@@ -366,7 +366,8 @@ function SlideImage({ src, alt }) {
   return (
     <img
       src={src}
-      alt={alt}
+      alt={alt || "Slide image"}
+      loading="lazy"
       onError={() => setImageFailed(true)}
       className="object-cover w-full h-full rounded-3xl border-2 border-foreground/10 shadow-2xl"
     />
@@ -493,14 +494,16 @@ export const HeroSection = React.forwardRef(
             {/* Navigation Buttons */}
             <button
               type="button"
-              className="absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 rounded-full h-10 w-10 z-20 bg-background/50 backdrop-blur-sm border border-foreground/15 flex items-center justify-center hover:bg-background/70 transition-colors"
+              aria-label="Previous slide"
+              className="absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 rounded-full h-10 w-10 z-20 bg-background/50 backdrop-blur-sm border border-foreground/15 flex items-center justify-center hover:bg-background/70 transition-colors cursor-pointer"
               onClick={handlePrev}
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
             <button
               type="button"
-              className="absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 rounded-full h-10 w-10 z-20 bg-background/50 backdrop-blur-sm border border-foreground/15 flex items-center justify-center hover:bg-background/70 transition-colors"
+              aria-label="Next slide"
+              className="absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 rounded-full h-10 w-10 z-20 bg-background/50 backdrop-blur-sm border border-foreground/15 flex items-center justify-center hover:bg-background/70 transition-colors cursor-pointer"
               onClick={handleNext}
             >
               <ChevronRight className="h-5 w-5" />
