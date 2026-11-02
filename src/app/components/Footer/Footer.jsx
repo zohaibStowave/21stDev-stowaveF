@@ -75,11 +75,11 @@ export const Footer7 = ({
               </a>
               {logo.title && <h2 className="text-xl font-semibold">{logo.title}</h2>}
             </div>
-            <p className="max-w-[70%] text-sm text-zinc-600 dark:text-zinc-400">
+            <p className="max-w-[70%] text-sm text-zinc-600 dark:text-zinc-300">
               {description}
             </p>
             {/* Social Icons Loop */}
-            <ul className="flex items-center space-x-6 text-zinc-600 dark:text-zinc-400">
+            <ul className="flex items-center space-x-6 text-zinc-600 dark:text-zinc-300">
               {socialLinks.map((social, idx) => (
                 <li key={idx} className="font-medium hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
                   <a href={social.href} aria-label={social.label} rel="noopener noreferrer">
@@ -95,7 +95,7 @@ export const Footer7 = ({
             {sections.map((section, sectionIdx) => (
               <div key={sectionIdx}>
                 <h3 className="mb-4 font-bold text-zinc-900 dark:text-zinc-100">{section.title}</h3>
-                <ul className="space-y-3 text-sm text-zinc-600 dark:text-zinc-400">
+                <ul className="space-y-3 text-sm text-zinc-600 dark:text-zinc-300">
                   {section.links.map((link, linkIdx) => (
                     <li
                       key={linkIdx}
@@ -111,7 +111,7 @@ export const Footer7 = ({
         </div>
         
         {/* Copyright and Bottom Legal Links */}
-        <div className="mt-8 flex flex-col justify-between gap-4 border-t border-zinc-200 dark:border-zinc-800 pt-8 pb-0 mb-0 text-xs font-medium text-zinc-600 dark:text-zinc-400 md:flex-row md:items-center md:text-left">
+        <div className="mt-8 flex flex-col justify-between gap-4 border-t border-zinc-200 dark:border-zinc-800 pt-8 pb-0 mb-0 text-xs font-medium text-zinc-600 dark:text-zinc-300 md:flex-row md:items-center md:text-left">
           <p className="order-2 lg:order-1">{copyright}</p>
           <ul className="order-1 flex flex-col gap-2 md:order-2 md:flex-row">
             {legalLinks.map((link, idx) => (

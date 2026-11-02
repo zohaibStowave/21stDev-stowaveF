@@ -148,7 +148,7 @@ export const FloatingAiAssistant = () => {
                 Shopping Assistant
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               </span>
-              <span className="text-[10px] text-zinc-400 font-medium">Ask anything & recommend</span>
+              <span className="text-[10px] text-zinc-300 font-medium">Ask anything & recommend</span>
             </div>
           </button>
         </div>

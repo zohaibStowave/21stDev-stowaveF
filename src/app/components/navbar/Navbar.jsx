@@ -82,14 +82,14 @@ function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="relative text-[13px] uppercase tracking-[0.14em] font-medium text-black/60 dark:text-[#f2f0ea]/60 hover:text-black dark:hover:text-[#f2f0ea] transition-colors duration-200 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-[#e3402b] after:transition-all after:duration-300 hover:after:w-full"
+                className="relative text-[13px] uppercase tracking-[0.14em] font-medium text-black/80 dark:text-[#f2f0ea]/80 hover:text-black dark:hover:text-[#f2f0ea] transition-colors duration-200 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-[#e3402b] after:transition-all after:duration-300 hover:after:w-full"
               >
                 {link.label}
               </a>
             ))}
 
             <div className="relative group">
-              <button className="flex items-center gap-1 text-[13px] uppercase tracking-[0.14em] font-medium text-black/60 dark:text-[#f2f0ea]/60 hover:text-black dark:hover:text-[#f2f0ea] transition-colors duration-200 cursor-pointer">
+              <button className="flex items-center gap-1 text-[13px] uppercase tracking-[0.14em] font-medium text-black/80 dark:text-[#f2f0ea]/80 hover:text-black dark:hover:text-[#f2f0ea] transition-colors duration-200 cursor-pointer">
                 Collection
                 <ArrowUpRight className="h-3.5 w-3.5 -rotate-45 opacity-0 group-hover:opacity-100 group-hover:rotate-0 transition-all duration-300" />
               </button>
@@ -99,7 +99,7 @@ function Navbar() {
                     <a
                       key={c.href}
                       href={c.href}
-                      className="flex items-center justify-between px-4 py-3 text-[13px] text-black/70 dark:text-[#f2f0ea]/70 hover:text-black dark:hover:text-[#f2f0ea] hover:bg-black/5 dark:hover:bg-white/5 transition-colors border-b border-black/5 dark:border-white/5 last:border-b-0"
+                      className="flex items-center justify-between px-4 py-3 text-[13px] text-black/80 dark:text-[#f2f0ea]/80 hover:text-black dark:hover:text-[#f2f0ea] hover:bg-black/5 dark:hover:bg-white/5 transition-colors border-b border-black/5 dark:border-white/5 last:border-b-0"
                     >
                       {c.label}
                       <ArrowUpRight className="h-3.5 w-3.5 opacity-40" />
@@ -158,7 +158,7 @@ function Navbar() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between px-5 py-4 border-b border-black/10 dark:border-white/10">
-              <span className="text-[12px] uppercase tracking-[0.2em] text-black/50 dark:text-[#f2f0ea]/50">
+              <span className="text-[12px] uppercase tracking-[0.2em] text-black/70 dark:text-[#f2f0ea]/70">
                 Menu
               </span>
               <div className="flex items-center gap-2">
@@ -179,14 +179,14 @@ function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="py-3 text-[15px] font-medium text-black/80 dark:text-[#f2f0ea]/80 hover:text-[#e3402b] transition-colors border-b border-black/5 dark:border-white/5"
+                  className="py-3 text-[15px] font-medium text-black/85 dark:text-[#f2f0ea]/85 hover:text-[#e3402b] transition-colors border-b border-black/5 dark:border-white/5"
                   style={{ animationDelay: `${i * 30}ms` }}
                 >
                   {link.label}
                 </a>
               ))}
 
-              <span className="mt-4 mb-1 text-[11px] uppercase tracking-[0.2em] text-black/40 dark:text-[#f2f0ea]/40">
+              <span className="mt-4 mb-1 text-[11px] uppercase tracking-[0.2em] text-black/60 dark:text-[#f2f0ea]/60">
                 Collections
               </span>
               {COLLECTIONS.map((c) => (
