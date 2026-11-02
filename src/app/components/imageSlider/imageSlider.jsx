@@ -14,6 +14,14 @@ const INITIAL_SLIDES = [
   },
 ];
 
+const getMobileUrl = (url) => {
+  if (!url) return "";
+  if (url.includes("res.cloudinary.com") && url.includes("/upload/")) {
+    return url.replace("/upload/", "/upload/f_auto,q_auto:best,w_1080/");
+  }
+  return url;
+};
+
 export default function ImageSlider() {
   const [slides, setSlides] = useState(INITIAL_SLIDES);
   const [current, setCurrent] = useState(0);
@@ -100,25 +108,33 @@ export default function ImageSlider() {
           className="flex h-full transition-transform duration-700 ease-in-out"
           style={{ transform: `translateX(-${current * 100}%)` }}
         >
-          {slides.map((slide, i) => (
-            <div key={i} className="relative w-full h-full flex-shrink-0">
-              <img
-                src={slide.src}
-                alt={slide.caption || `Slide ${i + 1}`}
-                className="w-full h-full object-cover"
-                draggable={false}
-                loading={i === 0 ? "eager" : "lazy"}
-                fetchPriority={i === 0 ? "high" : "auto"}
-              />
-              {slide.caption && (
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 sm:p-6 z-10">
-                  <p className="text-white text-sm sm:text-base font-medium">
-                    {slide.caption}
-                  </p>
-                </div>
-              )}
-            </div>
-          ))}
+          {slides.map((slide, i) => {
+            const mobileSrc = getMobileUrl(slide.src);
+            return (
+              <div key={i} className="relative w-full h-full flex-shrink-0">
+                <picture className="w-full h-full block">
+                  {mobileSrc && mobileSrc !== slide.src && (
+                    <source media="(max-width: 768px)" srcSet={mobileSrc} />
+                  )}
+                  <img
+                    src={slide.src}
+                    alt={slide.caption || `Slide ${i + 1}`}
+                    className="w-full h-full object-cover"
+                    draggable={false}
+                    loading={i === 0 ? "eager" : "lazy"}
+                    fetchPriority={i === 0 ? "high" : "auto"}
+                  />
+                </picture>
+                {slide.caption && (
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 sm:p-6 z-10">
+                    <p className="text-white text-sm sm:text-base font-medium">
+                      {slide.caption}
+                    </p>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
 
         {total > 1 && (

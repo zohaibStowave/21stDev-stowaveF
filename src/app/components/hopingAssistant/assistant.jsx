@@ -11,8 +11,10 @@ export const FloatingAiAssistant = () => {
   const [liveProducts, setLiveProducts] = useState([]);
   const [bagCount, setBagCount] = useState(0);
 
-  // 1. Fetch live active store products (Sweatshirts & Ezzywalk)
+  // 1. Fetch live active store products only when chat is opened
   useEffect(() => {
+    if (!isChatOpen) return;
+
     const fetchLiveProducts = async () => {
       try {
         const [sweatshirtRes, ezzywalkRes] = await Promise.all([
@@ -35,7 +37,7 @@ export const FloatingAiAssistant = () => {
     };
 
     fetchLiveProducts();
-  }, []);
+  }, [isChatOpen]);
 
   // 2. Track bag count from localStorage
   useEffect(() => {

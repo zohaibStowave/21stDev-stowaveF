@@ -63,6 +63,7 @@ function Navbar() {
                 src="/black-red-transparent.png"
                 alt="Stowave Logo"
                 fill
+                sizes="116px"
                 className="object-contain block dark:hidden"
                 priority
               />
@@ -70,6 +71,7 @@ function Navbar() {
                 src="/white_transparent_logo.png"
                 alt="Stowave Logo"
                 fill
+                sizes="116px"
                 className="object-contain hidden dark:block"
                 priority
               />

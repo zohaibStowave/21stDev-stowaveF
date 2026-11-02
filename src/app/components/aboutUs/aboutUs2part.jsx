@@ -3,6 +3,12 @@
 import React, { useRef, useState, useEffect, useMemo } from 'react';
 import Link from "next/link";
 
+let cachedMarqueeItems = [
+  { _id: "default-1", text: "Winter Sale Will Be Live Soon", linkUrl: "" },
+];
+let isFetchingMarquee = false;
+const marqueeListeners = new Set();
+
 export function Marquee({
   className,
   reverse = false,
@@ -17,25 +23,32 @@ export function Marquee({
 }) {
   const marqueeRef = useRef(null);
   
-  const [marqueeItems, setMarqueeItems] = useState([]);
-  const [loaded, setLoaded] = useState(false);
+  const [marqueeItems, setMarqueeItems] = useState(cachedMarqueeItems);
+  const [loaded, setLoaded] = useState(true);
 
   useEffect(() => {
-    const fetchMarquee = async () => {
-      try {
-        const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-        const res = await fetch(`${API_BASE_URL}/api/marquee`);
-        const data = await res.json();
-        if (data.success) {
-          setMarqueeItems(data.items);
-        }
-      } catch (error) {
-        console.error("Error fetching marquee items:", error);
-      } finally {
-        setLoaded(true);
-      }
+    marqueeListeners.add(setMarqueeItems);
+
+    if (!isFetchingMarquee && cachedMarqueeItems.length <= 1) {
+      isFetchingMarquee = true;
+      const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+      fetch(`${API_BASE_URL}/api/marquee`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success && Array.isArray(data.items) && data.items.length > 0) {
+            cachedMarqueeItems = data.items;
+            marqueeListeners.forEach((listener) => listener(data.items));
+          }
+        })
+        .catch((err) => console.error("Error fetching marquee items:", err))
+        .finally(() => {
+          isFetchingMarquee = false;
+        });
+    }
+
+    return () => {
+      marqueeListeners.delete(setMarqueeItems);
     };
-    fetchMarquee();
   }, []);
 
   const containerClasses = [
