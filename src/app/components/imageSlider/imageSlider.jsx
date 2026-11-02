@@ -96,7 +96,7 @@ export default function ImageSlider() {
   if (total === 0) return null;
 
   return (
-    <main className="w-full bg-neutral-950">
+    <main className="w-full bg-transparent">
       <div
         className="relative w-full overflow-hidden group select-none aspect-[3/1]"
         onMouseEnter={() => setIsPaused(true)}

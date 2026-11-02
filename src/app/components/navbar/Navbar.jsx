@@ -65,7 +65,6 @@ function Navbar() {
                 fill
                 sizes="116px"
                 className="object-contain block dark:hidden"
-                priority
               />
               <Image
                 src="/white_transparent_logo.png"
@@ -73,7 +72,6 @@ function Navbar() {
                 fill
                 sizes="116px"
                 className="object-contain hidden dark:block"
-                priority
               />
             </div>
           </Link>
