@@ -2,13 +2,19 @@
 import React, { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import clarity from "@microsoft/clarity";
+import dynamic from "next/dynamic";
 
-import AcmeHero from "../components/navbar/Navbar"; // Agar path ka issue ho tou correct kr lein
+import AcmeHero from "../components/navbar/Navbar";
 import { Footer7 } from "../components/Footer/Footer";
-import ChatAssistant from "../components/hopingAssistant/assistant";
-import VisitorTracker from "../components/VisitorTracker";
 import CookieBanner from "../components/CookieBanner";
-import { Marquee } from "./aboutUs/aboutUs2part";
+
+// Heavy components: lazy-loaded after first paint so they never block LCP
+const ChatAssistant = dynamic(() => import("../components/hopingAssistant/assistant"), {
+  ssr: false,
+});
+const VisitorTracker = dynamic(() => import("../components/VisitorTracker"), {
+  ssr: false,
+});
 
 export default function ClientLayoutWrapper({ children }) {
   const pathname = usePathname();
@@ -27,22 +33,17 @@ export default function ClientLayoutWrapper({ children }) {
 
   return (
     <>
-      {/* 0. Live Visitor Tracking */}
+      {/* 0. Live Visitor Tracking — deferred, never blocks paint */}
       {!isAdminPage && <VisitorTracker />}
 
-      {/* Marquee (Ye upar chala jayega scroll hone pe) */}
-      {!isAdminPage && (
-        <Marquee pauseOnHover className="[--duration:20s] !p-0" />
-      )}
-
-      {/* 🟢 YAHAN FIX KIYA HAI: 'sticky' ke sath 'top-0' aur 'z-[60]' lagaya hai */}
+      {/* Navbar — sticky top */}
       {!isAdminPage && (
         <div className="w-full pointer-events-auto sticky top-0 z-[60]">
           <AcmeHero />
         </div>
       )}
 
-      {/* 2. Chat Assistant */}
+      {/* 2. Chat Assistant — lazy loaded, doesn't block LCP */}
       {!isAdminPage && <ChatAssistant />}
 
       {/* 3. Page Content Render Area */}

@@ -45,7 +45,7 @@ export default function VisitorTracker() {
             }
           });
       }
-    }, 2500);
+    }, 5000);
 
     return () => {
       clearTimeout(timer);

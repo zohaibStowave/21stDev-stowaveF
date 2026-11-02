@@ -2,10 +2,17 @@
 
 import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
-import { Marquee } from "./components/aboutUs/aboutUs2part";
 import ImageSlider from "./components/imageSlider/imageSlider";
-import Collections from "./components/mainCollection/collection.js";
 
+// Marquee: dynamic to prevent its API fetch from blocking LCP
+const Marquee = dynamic(
+  () => import("./components/aboutUs/aboutUs2part").then((m) => m.Marquee),
+  { ssr: false }
+);
+// Collections: below-the-fold after slider
+const Collections = dynamic(() => import("./components/mainCollection/collection.js"), {
+  ssr: false,
+});
 // Below-the-fold components dynamically loaded to maximize mobile Performance and Speed Index
 const SweatshirtPage = dynamic(() => import("./sweatShirt/page"), {
   ssr: false,
