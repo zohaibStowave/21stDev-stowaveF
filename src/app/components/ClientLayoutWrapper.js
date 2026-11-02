@@ -5,14 +5,19 @@ import clarity from "@microsoft/clarity";
 import dynamic from "next/dynamic";
 
 import AcmeHero from "../components/navbar/Navbar";
-import { Footer7 } from "../components/Footer/Footer";
-import CookieBanner from "../components/CookieBanner";
 
-// Heavy components: lazy-loaded after first paint so they never block LCP
+// All below-the-navbar components lazy-loaded so only Navbar blocks initial paint
+const Footer7 = dynamic(
+  () => import("../components/Footer/Footer").then((m) => m.Footer7),
+  { ssr: false }
+);
 const ChatAssistant = dynamic(() => import("../components/hopingAssistant/assistant"), {
   ssr: false,
 });
 const VisitorTracker = dynamic(() => import("../components/VisitorTracker"), {
+  ssr: false,
+});
+const CookieBanner = dynamic(() => import("../components/CookieBanner"), {
   ssr: false,
 });
 

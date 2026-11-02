@@ -2,37 +2,34 @@
 
 import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
+import { Marquee } from "./components/aboutUs/aboutUs2part";
 import ImageSlider from "./components/imageSlider/imageSlider";
+import Collections from "./components/mainCollection/collection.js";
 
-// Marquee: dynamic to prevent its API fetch from blocking LCP
-const Marquee = dynamic(
-  () => import("./components/aboutUs/aboutUs2part").then((m) => m.Marquee),
-  { ssr: false }
-);
-// Collections: below-the-fold after slider
-const Collections = dynamic(() => import("./components/mainCollection/collection.js"), {
-  ssr: false,
-});
-// Below-the-fold components dynamically loaded to maximize mobile Performance and Speed Index
+// Below-the-fold heavy components — dynamically loaded after first paint
+// ssr:false means they don't block server render or initial JS bundle
 const SweatshirtPage = dynamic(() => import("./sweatShirt/page"), {
   ssr: false,
+  loading: () => <div style={{ minHeight: "600px" }} />,
 });
 const HeroSection = dynamic(
   () => import("./components/slider/slider").then((mod) => mod.HeroSection),
-  { ssr: false }
+  { ssr: false, loading: () => <div style={{ minHeight: "400px" }} /> }
 );
 const SocialCards = dynamic(() => import("./components/DailyPosts/dailyPost"), {
   ssr: false,
+  loading: () => <div style={{ minHeight: "300px" }} />,
 });
 const EzzywalkPage = dynamic(() => import("./ezzywalkslipers/page"), {
   ssr: false,
+  loading: () => <div style={{ minHeight: "600px" }} />,
 });
 const RadialScrollGallery = dynamic(
   () =>
     import("./components/scrollGallery/scrollGallery").then(
       (mod) => mod.RadialScrollGallery
     ),
-  { ssr: false }
+  { ssr: false, loading: () => <div style={{ minHeight: "400px" }} /> }
 );
 
 const sampleCards = [
